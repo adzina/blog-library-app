@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="user-edit-view">
   <form #userForm="ngForm" (ngSubmit)="save(userForm.value)">
     <mat-card-header>
       <mat-card-title>
@@ -7,25 +7,66 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="First name" ngModel name="firstName">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Last name" ngModel name="lastName">
+        <input matInput placeholder="First name" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel"
+          minlength="3" required>
+        <mat-hint>
+          Min length: 3 characters
+        </mat-hint>
+        <mat-error *ngIf="!firstName.valid && firstName.errors.required">
+          First name is required
+        </mat-error>
+        <mat-error *ngIf="!firstName.valid && !firstName.errors.required">
+          First name must be longer than 2
+        </mat-error>
       </mat-form-field>
       <br>
 
       <mat-form-field>
-        <input matInput placeholder="Email" name="email" ngModel>
+        <input matInput placeholder="Last name" [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel"
+          maxlength="30" required>
+        <mat-hint>
+          Max length: 30 characters
+        </mat-hint>
+        <mat-error *ngIf="!lastName.valid">
+          Last name is required
+        </mat-error>
       </mat-form-field>
-
       <br>
+
       <mat-form-field>
-        <input matInput placeholder="Password" type="password" name="password" ngModel>
+        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" email #email="ngModel" required>
+        <mat-error *ngIf="!email.valid && email.errors.required">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="!email.valid  && !email.errors.required">
+          Invalid email
+        </mat-error>
       </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="user.password" #password="ngModel"
+          required>
+        <mat-error *ngIf="!password.valid">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="Repeat password" type="password" name="repeatPasswordControl" required [(ngModel)]="repeatPassword"
+          #repeatPasswordControl="ngModel">
+        <mat-error *ngIf="!repeatPasswordControl.valid">
+          Repeating password is required
+        </mat-error>
+      </mat-form-field>
+      <div class="mat-error password-error">
+        <div *ngIf="passwordsMatch() && repeatPasswordControl.valid" class="error-text">Passwords do not match</div>
+      </div>
+
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.form.valid || passwordsMatch()">
         Save
       </button>
       <a mat-button routerLink="/">Cancel</a>
