@@ -6,13 +6,12 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent {
-  constructor(
-    private router: Router,
-    private userService: UserService
-  ) {}
+  private user: any = {};
+  private repeatPassword: string;
+  constructor(private router: Router, private userService: UserService) {}
   save(form: NgForm) {
     this.userService.save(form).subscribe(
       result => {
@@ -23,5 +22,8 @@ export class UserEditComponent {
   }
   showLogin() {
     this.router.navigate(['/']);
+  }
+  passwordsMatch() {
+    return this.user.password && this.user.password !== this.repeatPassword;
   }
 }
