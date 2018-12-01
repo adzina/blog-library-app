@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../shared/user/user.service';
 import { NgForm } from '@angular/forms';
@@ -8,10 +8,14 @@ import { NgForm } from '@angular/forms';
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.scss']
 })
-export class UserEditComponent {
-  private user: any = {};
-  private repeatPassword: string;
-  constructor(private router: Router, private userService: UserService) {}
+export class UserEditComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) {}
+  user: any = {};
+  repeatPassword = '';
+  ngOnInit() {}
   save(form: NgForm) {
     this.userService.save(form).subscribe(
       result => {

@@ -1,4 +1,7 @@
-<mat-card class="user-edit-view">
+<mat-toolbar color="primary">
+  <span>Welcome to the Library App!</span>
+</mat-toolbar>
+<mat-card>
   <form #userForm="ngForm" (ngSubmit)="save(userForm.value)">
     <mat-card-header>
       <mat-card-title>
@@ -7,8 +10,7 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="First name" [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel"
-          minlength="3" required>
+        <input matInput placeholder="First name" [(ngModel)]="user.firstName" minlength="3" required name="firstName" #firstName="ngModel">
         <mat-hint>
           Min length: 3 characters
         </mat-hint>
@@ -22,8 +24,7 @@
       <br>
 
       <mat-form-field>
-        <input matInput placeholder="Last name" [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel"
-          maxlength="30" required>
+        <input matInput placeholder="Last name" [(ngModel)]="user.lastName" required maxlength="30" name="lastName" #lastName="ngModel">
         <mat-hint>
           Max length: 30 characters
         </mat-hint>
@@ -34,7 +35,7 @@
       <br>
 
       <mat-form-field>
-        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" email #email="ngModel" required>
+        <input matInput placeholder="Email" [ngModel]="user.email" required name="email" email #email="ngModel">
         <mat-error *ngIf="!email.valid && email.errors.required">
           Email is required
         </mat-error>
@@ -45,8 +46,7 @@
       <br>
 
       <mat-form-field>
-        <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="user.password" #password="ngModel"
-          required>
+        <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.password" #password="ngModel">
         <mat-error *ngIf="!password.valid">
           Password is required
         </mat-error>

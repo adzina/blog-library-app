@@ -5,8 +5,8 @@ body {
   margin: 0;
   font-family: Roboto, sans-serif;
   background-color: black;
+  color: white;
 }
-
 .mat-card {
   max-width: 30%;
   max-height: 30%;
@@ -17,12 +17,10 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-
-.mat-form-field {
-  width: 90%;
-}
-
 .mat-card-actions {
   margin-left: 0px !important;
   margin-right: 0px !important;
+}
+.mat-form-field {
+  width: 90%;
 }

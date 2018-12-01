@@ -1,0 +1,25 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav fullscreen style="position: fixed">
+    <mat-nav-list>
+      <a mat-list-item href="/dashboard" [ngClass]="{'active': 'dashboard' === this.activeTab}">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line>Dashboard</span>
+      </a>
+      <a mat-list-item href="/collections" [ngClass]="{'active': 'collections' === this.activeTab}">
+        <mat-icon mat-list-icon>book</mat-icon>
+        <span mat-line>Collections</span>
+      </a>
+      <a mat-list-item href="/user-update" [ngClass]="{'active': 'user-update' === this.activeTab}">
+        <mat-icon mat-list-icon>perm_identity</mat-icon>
+        <span mat-line>Account</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.open()" fxHide="false">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span> Library App</span>
+    <span class="blank-grow"></span>
+  </mat-toolbar>
+</mat-sidenav-container>

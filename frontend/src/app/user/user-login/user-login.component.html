@@ -1,3 +1,6 @@
+<mat-toolbar color="primary">
+  <span>Welcome to the Library App!</span>
+</mat-toolbar>
 <mat-card>
   <form #userForm="ngForm" (ngSubmit)="save(userForm.value)">
     <mat-card-header>
@@ -8,12 +11,12 @@
     <mat-card-content>
       <mat-form-field>
         <mat-icon matSuffix>face</mat-icon>
-        <input matInput placeholder="Email" name="email" ngModel required>
+        <input matInput placeholder="Email" name="email" required (ngModel)="emailText" #email="ngModel">
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-icon matSuffix>lock</mat-icon>
-        <input matInput placeholder="Password" type="password" name="password" ngModel required>
+        <input matInput placeholder="Password" type="password" required name="password" (ngModel)="passwordText" #password="ngModel">
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

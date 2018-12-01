@@ -1,20 +1,14 @@
-.user-edit-view {
-  @keyframes slide {
-    from {
-      font-size: 0px;
-    }
-    to {
-      font-size: 10px;
-    }
-  }
-  .error-text {
-    font-size: 10px;
-    animation-name: slide;
-    animation-duration: 0.2s;
-    margin-top: 0px;
-  }
-  .password-error {
-    min-height: 30px;
-    margin-top: -10px;
-  }
+@keyframes slide {
+  from { font-size: 0px }
+  to { font-size: 10px }
+}
+.error-text {
+  font-size: 10px;
+  animation-name: slide;
+  animation-duration: 0.2s;
+  margin-top: 0px;
+}
+.password-error {
+  min-height: 30px;
+  margin-top: -10px;
 }
